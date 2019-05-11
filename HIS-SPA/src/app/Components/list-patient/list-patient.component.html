@@ -1,0 +1,69 @@
+<form #form="ngForm" (ngSubmit)="loadPatients()" class="form-inline justify-content-center mt-2" novalidate>
+  <div class="form-group">
+    <label for="name">Name : </label>
+    <input type="text" 
+      class="form-control ml-1" 
+      style="width: 70px" 
+      id="name" 
+      name="name"
+      [(ngModel)]="userParams.name">
+  </div>
+  <div class="form-group px-2">
+    <label for="gender">Sex : </label>
+    <select 
+        class="form-control ml-1" 
+        style="width: 130px" 
+        id="gender" 
+        name="gender"
+        [(ngModel)]="userParams.gender">
+      <option *ngFor="let gender of genderList" [value]="gender.value">
+          {{gender.display}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group px-2">
+      <label for="nationality">Nationality : </label>
+      <select 
+        class="form-control ml-1" 
+        style="width: 130px" 
+        id="nationality" 
+        name="nationality"
+        [(ngModel)]="userParams.nationality">
+        <option *ngFor="let nation of nationalityList" [value]="nation">
+            {{nation}}
+        </option>
+      </select>
+  </div>
+  <div class="form-group">
+      <label for="mobileNumber">Mobile Number : </label>
+      <input 
+        type="text" 
+        class="form-control ml-1" 
+        style="width: 70px" 
+        id="mobileNumber" 
+        name="mobileNumber"
+        [(ngModel)]="userParams.mobileNumber">
+  </div>
+  <button type="submit" class="btn btn-primary" style="margin-left:10px">Apply Filters</button>
+  <button type="button" class="btn btn-info" style="margin-left:10px" (click)="resetFilters()">Reset Filter</button>
+</form>
+
+<div class="container mt-3">
+  <accordion class="justify-content-center">
+    <accordion-group *ngFor="let patient of patientList">
+      <button class="btn btn-link btn-block clearfix" accordion-heading>
+        <div class="pull-left float-left">{{patient.fullName}}</div>
+        <span class="badge badge-secondary float-right pull-right">Age: {{patient.age}}</span>
+      </button>
+      <p [innerHTML]="patient.address"></p>
+      <span class="badge badge-primary">Gender: {{patient.gender}}</span>
+    </accordion-group>
+  </accordion>
+</div>
+
+<div class="d-flex justify-content-center">
+  <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [(ngModel)]="pagination.currentPage"
+    [itemsPerPage]="pagination.itemsPerPage" (pageChanged)="pageChanged($event)" previousText="&lsaquo;"
+    nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+  </pagination>
+</div>

@@ -1,0 +1,334 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form #form="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="firstName">First Name : </label>
+          <input 
+              [(ngModel)]="patient.patientName.firstName"
+              type="text" 
+              class="form-control" 
+              id="firstName" 
+              name="firstName"
+              placeholder="First Name"
+              required>
+        </div>
+        <div class="form-group">
+          <label for="midName">Middle Name : </label>
+          <input 
+              [(ngModel)]="patient.patientName.midName"
+              type="text" 
+              class="form-control" 
+              id="midName" 
+              name="midName"
+              placeholder="Middle Name" >
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input 
+              [(ngModel)]="patient.patientName.lastName"
+              type="text" 
+              class="form-control" 
+              id="lastName" 
+              name="lastName"
+              placeholder="Last Name"
+              required>
+        </div>
+        <div class="form-group">
+          <label for="suffix">Suffix</label>
+          <input 
+          [(ngModel)]="patient.patientName.suffix" 
+          name="suffix" 
+          type="text" 
+          class="form-control" 
+          id="suffix" 
+          placeholder="Suffix">
+        </div>
+        <div class="form-group">
+          <label for="addressLine1">Address Line 1</label>
+          <input 
+          [(ngModel)]="patient.patientAddress.addressLine1" 
+          name="addressLine1" 
+          type="text" 
+          class="form-control" 
+          id="addressLine1" 
+          placeholder="Address Line 1"
+          required>
+        </div>
+        <div class="form-group">
+          <label for="addressLine2">Address Line 2</label>
+          <input 
+          [(ngModel)]="patient.patientAddress.addressLine2" 
+          name="addressLine2"  
+          type="text" 
+          class="form-control" 
+          id="addressLine2" 
+          placeholder="Address Line 2"
+          required>
+        </div>
+        <div class="form-group">
+          <label for="pOBox">POBox</label>
+          <input 
+          [(ngModel)]="patient.patientAddress.pOBox" 
+          name="pOBox" 
+          type="text" 
+          class="form-control" 
+          id="pOBox" 
+          placeholder="POBox">
+        </div>
+        <div class="form-group">
+          <label for="patientDateOfBirth">Date Of Birth : </label>
+          <input type="text"
+          [(ngModel)]="patient.patientDateOfBirth" 
+                 placeholder="Datepicker"
+                 class="form-control"
+                 name="patientDateOfBirth"
+                 bsDatepicker>
+        </div>
+        <div class="form-group">
+            <label for="gender">Sex : </label>
+            <select 
+                [(ngModel)]="patient.patientGender"
+                name="gender"
+                class="form-control ml-1" 
+                style="width: 130px" 
+                id="gender"
+                required>
+              <option *ngFor="let gender of genderList" [value]="gender.value">
+                  {{gender.display}}
+              </option>
+            </select>
+          </div>
+        <div class="form-group">
+          <label for="passportNo">PassportNo</label>
+          <input 
+          [(ngModel)]="patient.PatientIdentification.PassportNo" 
+          name="passportNo" 
+          type="text" 
+          class="form-control" 
+          id="passportNo" 
+          placeholder="PassportNo"
+          required>
+        </div>
+        <div class="form-group">
+          <label for="emirateId">EmirateId</label>
+          <input 
+          [(ngModel)]="patient.PatientIdentification.EmirateId" 
+          name="emirateId" 
+          type="text" 
+          class="form-control" 
+          id="emirateId" 
+          placeholder="EmirateId"
+          required>
+        </div>
+        <div class="form-group">
+          <label for="patientWorkTitle">Patient Work Title</label>
+          <input 
+          [(ngModel)]="patient.patientWorkTitle" 
+          name="patientWorkTitle" 
+          type="text" 
+          class="form-control" 
+          id="patientWorkTitle" 
+          placeholder="Patient Work Title">
+        </div>
+        <div class="form-group">
+          <label for="mailAddress">Mail Address</label>
+          <input 
+          [(ngModel)]="patient.PatientContactInformation.mailAddress" 
+          name="mailAddress" 
+          type="email" 
+          class="form-control" 
+          id="mailAddress" 
+          aria-describedby="emailHelp"
+          placeholder="Enter email">
+        </div>
+
+        <div class="form-group">
+          <label for="mobile">Mobile</label>
+          <input 
+          [(ngModel)]="patient.PatientContactInformation.telephone.Mobile" 
+          name="mobile" 
+          type="text" 
+          class="form-control" 
+          id="mobile" 
+          placeholder="Mobile"
+          required>
+        </div>
+        <div class="form-group">
+          <label for="homeTelephone">Home Telephone</label>
+          <input 
+          [(ngModel)]="patient.PatientContactInformation.telephone.Home" 
+          name="homeTelephone" 
+          type="text" 
+          class="form-control" 
+          id="homeTelephone" 
+          placeholder="Home Telephone">
+        </div>
+        <div class="form-group">
+          <label for="workTelephone">WorkTelephone</label>
+          <input 
+          [(ngModel)]="patient.PatientContactInformation.telephone.Work" 
+          name="workTelephone" 
+          type="text" 
+          class="form-control" 
+          id="workTelephone" 
+          placeholder="Work Telephone">
+        </div>
+        <div class="form-group">
+          <label for="guardianFirstName">Guardian FirstName</label>
+          <input 
+          [(ngModel)]="patient.PatientGuardian.guardianName.firstName" 
+          name="guardianFirstName" 
+          type="text" 
+          class="form-control" 
+          id="guardianFirstName" 
+          placeholder="Guardian FirstName">
+        </div>
+        <div class="form-group">
+          <label for="guardianMiddleName">Guardian MiddleName</label>
+          <input 
+          [(ngModel)]="patient.PatientGuardian.guardianName.midName" 
+          name="guardianMiddleName" 
+          type="text" 
+          class="form-control" 
+          id="guardianMiddleName" 
+          placeholder="Guardian MiddleName">
+        </div>
+        <div class="form-group">
+          <label for="guardianLastName">Guardian LastName</label>
+          <input 
+          [(ngModel)]="patient.PatientGuardian.guardianName.lastName" 
+          name="guardianLastName" 
+          type="text" 
+          class="form-control" 
+          id="guardianLastName" 
+          placeholder="Guardian LastName">
+        </div>
+        <div class="form-group">
+          <label for="guardianSuffix">Guardian Suffix</label>
+          <input 
+          [(ngModel)]="patient.PatientGuardian.guardianName.suffix" 
+          name="guardianSuffix" 
+          type="text" 
+          class="form-control" 
+          id="guardianSuffix" 
+          placeholder="Guardian Suffix">
+        </div>
+        <div class="form-group">
+          <label for="guardianMobile">Guardian Mobile</label>
+          <input 
+          [(ngModel)]="patient.PatientGuardian.guardianTelephone.Mobile" 
+          name="guardianMobile" 
+          type="text" 
+          class="form-control" 
+          id="guardianMobile" 
+          placeholder="Guardian Mobile">
+        </div>
+        <div class="form-group">
+          <label for="guardianHomeTelephone">Guardian Home Telephone</label>
+          <input 
+          [(ngModel)]="patient.PatientGuardian.guardianTelephone.Home" 
+          name="guardianHomeTelephone" 
+          type="text" 
+          class="form-control" 
+          id="guardianHomeTelephone" 
+          placeholder="Guardian Home Telephone">
+        </div>
+        <div class="form-group">
+          <label for="guardianWorkTelephone">Guardian Work Telephone</label>
+          <input 
+          [(ngModel)]="patient.PatientGuardian.guardianTelephone.Work" 
+          name="guardianWorkTelephone" 
+          type="text" 
+          class="form-control" 
+          id="guardianWorkTelephone" 
+          placeholder="Guardian Work Telephone">
+        </div>
+        <div class="form-group">
+          <label for="guardianAddressLine1">Guardian Address Line 1</label>
+          <input 
+          [(ngModel)]="patient.PatientGuardian.guardianAddress.addressLine1" 
+          name="guardianAddressLine1" 
+          type="text" 
+          class="form-control" 
+          id="guardianAddressLine1" 
+          placeholder="Guardian Address Line 1">
+        </div>
+        <div class="form-group">
+          <label for="guardianAddressLine2">Guardian Address Line 2</label>
+          <input 
+          [(ngModel)]="patient.PatientGuardian.guardianAddress.addressLine2" 
+          name="guardianAddressLine2" 
+          type="text" 
+          class="form-control" 
+          id="guardianAddressLine2" 
+          placeholder="Guardian Address Line 2">
+        </div>
+        <div class="form-group">
+          <label for="guardianPOBox">Guardian POBox</label>
+          <input 
+          [(ngModel)]="patient.PatientGuardian.guardianAddress.pOBox" 
+          name="guardianPOBox"  
+          type="text" 
+          class="form-control" 
+          id="guardianPOBox" 
+          placeholder="Guardian POBox">
+        </div>
+        <div class="form-group">
+          <label for="relation">Guardian Relation : </label>
+          <select 
+            [(ngModel)]="patient.PatientGuardian.guardianRelation" 
+            name="relation"
+            class="form-control" 
+            style="width: 130px" 
+            id="relation"
+            required>
+            <option *ngFor="let relation of guardianRelationList" [value]="relation">
+                {{relation}}
+            </option>
+          </select>
+      </div>
+        <div class="form-group">
+            <label for="nationality">Nationality : </label>
+            <select 
+              [(ngModel)]="patient.patientNationality" 
+              name="nationality"
+              class="form-control" 
+              style="width: 130px" 
+              id="nationality">
+              <option *ngFor="let nation of nationalityList" [value]="nation">
+                  {{nation}}
+              </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="insurance">Insurance : </label>
+            <select 
+            [(ngModel)]="patient.patientInsurance" 
+              name="insurance"
+              class="form-control" 
+              style="width: 130px" 
+              id="insurance">
+              <option *ngFor="let insurance of insuranceList" [value]="insurance">
+                  {{insurance}}
+              </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="maritalStatus">Marital Status : </label>
+            <select 
+              [(ngModel)]="patient.patientMaritalStatus" 
+              name="maritalStatus"
+              class="form-control" 
+              style="width: 130px" 
+              id="maritalStatus">
+              <option *ngFor="let status of maritalStatusList" [value]="status">
+                  {{status}}
+              </option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
