@@ -15,5 +15,6 @@ namespace HIS.Infrastructure.DataBase
             base.OnModelCreating(modelBuilder);
             new PatientModelBuilder(modelBuilder.Entity<Patient>());
         }
+        public DbSet<User> Users { get; set; }
     }
 }
